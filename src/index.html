@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Local Art Gallery</title>
+  <title>Interactive Art Gallery</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>🖼️ Upload Your CSS Art Gallery</h1>
-    <p>Select images from your device to create your own gallery</p>
-    <input type="file" id="imageInput" multiple accept="image/*" />
+    <h1>🖼️ Interactive Art Gallery</h1>
+    <p>Upload or drag & drop images from your device</p>
+    <div id="uploadArea">
+      <input type="file" id="imageInput" multiple accept="image/*" hidden />
+      <button id="uploadBtn">Choose Images</button>
+      <p>or drag & drop them here</p>
+    </div>
   </header>
 
   <main class="gallery" id="gallery"></main>
 
   <footer>
-    <p>Made with 💻 on your device — no upload, just HTML/CSS/JS</p>
+    <p>✨ Built with HTML, CSS, JS – no backend needed!</p>
   </footer>
 
   <script src="script.js"></script>
