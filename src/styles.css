@@ -1,24 +1,53 @@
-const imageInput = document.getElementById('imageInput');
-const gallery = document.getElementById('gallery');
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+  color: #333;
+  text-align: center;
+}
 
-imageInput.addEventListener('change', function () {
-  const files = Array.from(this.files);
+header {
+  padding: 2rem 1rem;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
 
-  files.forEach(file => {
-    if (!file.type.startsWith('image/')) return;
+h1 {
+  margin-bottom: 0.5rem;
+}
 
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const card = document.createElement('div');
-      card.className = 'card';
+input[type="file"] {
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
 
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      img.alt = file.name;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
 
-      card.appendChild(img);
-      gallery.appendChild(card);
-    };
-    reader.readAsDataURL(file);
-  });
-});
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+footer {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #777;
+  background: #f0f0f0;
+}
