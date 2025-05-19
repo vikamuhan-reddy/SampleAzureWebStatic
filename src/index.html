@@ -3,34 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CSS Art Gallery</title>
+  <title>Local Art Gallery</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>🎨 CSS Art Gallery</h1>
-    <p>Minimal CSS-only creations</p>
+    <h1>🖼️ Upload Your CSS Art Gallery</h1>
+    <p>Select images from your device to create your own gallery</p>
+    <input type="file" id="imageInput" multiple accept="image/*" />
   </header>
 
-  <main class="gallery">
-    <div class="card">
-      <div class="art sun"></div>
-      <p class="title">Sunny Day</p>
-    </div>
-
-    <div class="card">
-      <div class="art cat"></div>
-      <p class="title">Cute Cat</p>
-    </div>
-
-    <div class="card">
-      <div class="art flower"></div>
-      <p class="title">Simple Flower</p>
-    </div>
-  </main>
+  <main class="gallery" id="gallery"></main>
 
   <footer>
-    <p>Made with 💖 using HTML & CSS</p>
+    <p>Made with 💻 on your device — no upload, just HTML/CSS/JS</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
