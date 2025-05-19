@@ -1,70 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        nav {
-            background-color: #444;
-            padding: 1em;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1em;
-        }
-        nav a:hover {
-            color: #ddd;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 2em;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Art Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="container">
-        <h2>About Us</h2>
-        <p>This is a simple sample website created using HTML and CSS. It features a responsive design with a header, navigation bar, main content area, and footer.</p>
-        <h2>Contact</h2>
-        <p>Email: example@example.com</p>
-        <p>Phone: (123) 456-7890</p>
+  <header>
+    <h1>🎨 CSS Art Gallery</h1>
+    <p>Minimal CSS-only creations</p>
+  </header>
+
+  <main class="gallery">
+    <div class="card">
+      <div class="art sun"></div>
+      <p class="title">Sunny Day</p>
     </div>
-    <footer>
-        <p>&copy; 2025 Sample Website. All rights reserved.</p>
-    </footer>
+
+    <div class="card">
+      <div class="art cat"></div>
+      <p class="title">Cute Cat</p>
+    </div>
+
+    <div class="card">
+      <div class="art flower"></div>
+      <p class="title">Simple Flower</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Made with 💖 using HTML & CSS</p>
+  </footer>
 </body>
 </html>
