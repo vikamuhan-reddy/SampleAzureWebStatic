@@ -1,21 +1,24 @@
-const filterButtons = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.card');
+const imageInput = document.getElementById('imageInput');
+const gallery = document.getElementById('gallery');
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const filter = button.getAttribute('data-filter');
+imageInput.addEventListener('change', function () {
+  const files = Array.from(this.files);
 
-    // Remove "active" class from all buttons
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
+  files.forEach(file => {
+    if (!file.type.startsWith('image/')) return;
 
-    cards.forEach(card => {
-      const category = card.getAttribute('data-category');
-      if (filter === 'all' || category === filter) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.alt = file.name;
+
+      card.appendChild(img);
+      gallery.appendChild(card);
+    };
+    reader.readAsDataURL(file);
   });
 });
