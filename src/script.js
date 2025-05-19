@@ -1,14 +1,36 @@
 const imageInput = document.getElementById('imageInput');
+const uploadBtn = document.getElementById('uploadBtn');
+const uploadArea = document.getElementById('uploadArea');
 const gallery = document.getElementById('gallery');
 
-imageInput.addEventListener('change', function () {
-  const files = Array.from(this.files);
+// Handle file input manually
+uploadBtn.addEventListener('click', () => imageInput.click());
 
-  files.forEach(file => {
+imageInput.addEventListener('change', () => handleFiles(imageInput.files));
+
+// Handle drag and drop
+uploadArea.addEventListener('dragover', e => {
+  e.preventDefault();
+  uploadArea.classList.add('dragover');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+  uploadArea.classList.remove('dragover');
+});
+
+uploadArea.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadArea.classList.remove('dragover');
+  const files = e.dataTransfer.files;
+  handleFiles(files);
+});
+
+function handleFiles(files) {
+  [...files].forEach(file => {
     if (!file.type.startsWith('image/')) return;
 
     const reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onload = e => {
       const card = document.createElement('div');
       card.className = 'card';
 
@@ -16,9 +38,15 @@ imageInput.addEventListener('change', function () {
       img.src = e.target.result;
       img.alt = file.name;
 
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.textContent = '×';
+      deleteBtn.onclick = () => card.remove();
+
       card.appendChild(img);
+      card.appendChild(deleteBtn);
       gallery.appendChild(card);
     };
     reader.readAsDataURL(file);
   });
-});
+}
