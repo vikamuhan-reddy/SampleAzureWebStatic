@@ -1,126 +1,24 @@
-/* General styles */
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #fdfdfd;
-  color: #333;
-  text-align: center;
-}
+const imageInput = document.getElementById('imageInput');
+const gallery = document.getElementById('gallery');
 
-header {
-  background: #f9f9f9;
-  padding: 2rem 1rem;
-  border-bottom: 1px solid #eee;
-}
+imageInput.addEventListener('change', function () {
+  const files = Array.from(this.files);
 
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
+  files.forEach(file => {
+    if (!file.type.startsWith('image/')) return;
 
-header p {
-  color: #666;
-}
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const card = document.createElement('div');
+      card.className = 'card';
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-}
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.alt = file.name;
 
-.card {
-  background: white;
-  padding: 1rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.title {
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-/* CSS Art: Sun */
-.sun {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-  background: #FFD700;
-  border-radius: 50%;
-  box-shadow: 0 0 20px #FFD700;
-}
-
-/* CSS Art: Cat (basic face) */
-.cat {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-  background: #444;
-  border-radius: 50%;
-}
-
-.cat::before,
-.cat::after {
-  content: '';
-  position: absolute;
-  top: -20px;
-  width: 30px;
-  height: 30px;
-  background: #444;
-  border-radius: 50%;
-}
-
-.cat::before {
-  left: -5px;
-  transform: rotate(-25deg);
-}
-
-.cat::after {
-  right: -5px;
-  transform: rotate(25deg);
-}
-
-/* CSS Art: Flower */
-.flower {
-  position: relative;
-  width: 0;
-  height: 0;
-  margin: 30px auto;
-}
-
-.flower::before,
-.flower::after {
-  content: "";
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background: pink;
-  border-radius: 50%;
-}
-
-.flower::before {
-  transform: translate(-30px, 0);
-}
-
-.flower::after {
-  transform: translate(30px, 0);
-}
-
-.flower::after {
-  top: -30px;
-  left: -30px;
-}
-
-.flower::before {
-  top: 30px;
-  left: -30px;
-}
-
-footer {
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #777;
-}
+      card.appendChild(img);
+      gallery.appendChild(card);
+    };
+    reader.readAsDataURL(file);
+  });
+});
